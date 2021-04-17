@@ -6,6 +6,7 @@
 
 public class Task {
     //ATRIBUTOS
+    private int iD; //contador 
     private String descripcion; 
     private boolean estado; //completa o incompleta
     private int dia;
@@ -16,6 +17,13 @@ public class Task {
     
     //GET  Y SET
     //Set: recibe un valor y lo guarda en descripcion
+    public void setID(int iD){
+        this.iD=iD;
+    }
+    public int getID(){
+        return iD;
+              
+    }
     public void setDescripcion (String descripcion){
         this.descripcion = descripcion;
     }
@@ -68,7 +76,9 @@ public class Task {
     }
     
     //CONTRUCTORES
+    
     public Task(){
+        this.iD=0;
         this.descripcion = "";
         this.estado = false;  //false tarea incompleta
         //this.fechaLimite =  new Date (2021,3,30);
@@ -79,14 +89,15 @@ public class Task {
         this.anio = 0; //ver
                
     }
-    public Task(String descripcion, boolean estado, int dia,int mes,int anio, boolean entregado, boolean eliminado){
-        this.descripcion = "";
-        this.estado = false;  //false tarea incompleta
-        this.dia = 0; //ver
-        this.mes = 0; //ver
-        this.anio = 0; //ver
-        this.entregado= false;
-        this.eliminado=false;
+    public Task( int iD,String descripcion, boolean estado, int dia,int mes,int anio, boolean entregado, boolean eliminado){
+        this.iD= iD;
+        this.descripcion = descripcion;
+        this.estado = estado;  //false tarea incompleta
+        this.dia = dia; //ver
+        this.mes = mes; //ver
+        this.anio = anio; //ver
+        this.entregado= entregado;
+        this.eliminado= eliminado;
     }
     //METODOS 
    

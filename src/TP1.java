@@ -3,23 +3,28 @@
 //   import java.util.Date; //paquete para Date
   
 //package TP1;
-
-public class TP1 {
+ import java.util.ArrayList; //paquete para arralist 
+ import java.util.Iterator; //para iteraciones 
+ public class TP1 {
 
     
     public static void main(String[] args) {
         
-    Task  TareaUno;
+    /*Task  TareaUno;
     Task  TareaDos;
     Task  TareaTres;
-    
     TareaUno= new Task(); //instancie los objetos de la clase task
     TareaDos= new Task();
-    TareaTres= new Task();
+    TareaTres= new Task();*/  
+                         //= ->constructor de la clase arraylist
+    ArrayList<Task> ListaTareas = new ArrayList <Task> ();
+    //objeto tarea que se guarListaTareasda en una lista de tipo clase task
+  
        
     System.out.println("BIENVENIDOS");
     
     //DECLARACION DE VARIABLES
+     int iD=0;
      String descrip; 
      boolean ESTADO; //completa o incompleta
      int DIA,MES,ANIO;
@@ -27,154 +32,107 @@ public class TP1 {
      boolean elimin; 
     int menu=0,opcion=0,ingreso=0;
     int mes=0, dia=0 ,anio=0;
-   
+    
+    
+    
+    
     Scanner entrada = new Scanner(System.in);
      //fechaLim = new Date(22/3/2021);
      do{
          System.out.println("OPCIONES");
-        System.out.println("1-COMPLETAR TAREA");
+        System.out.println("1-CREAR TAREA");
         System.out.println("2-VER LISTADO");
         System.out.println("3-MOSTRAR UNA TAREA");
         System.out.println("4-MARCAR UNA TAREA COMO HECHA");
         System.out.println("5-ELIMINAR UNA TAREA");
         System.out.println("INGRESE UNA OPCION");
-         Task[] arregloTarea= new Task[3];
+        /*Task[] arregloTarea= new Task[3];
                  arregloTarea[0]= TareaUno;
                  arregloTarea[1]= TareaDos;
-                 arregloTarea[2]= TareaTres;
+                 arregloTarea[2]= TareaTres;*/
         opcion = entrada.nextInt(); //ingresa datos
          switch (opcion){
              case 1:
-                  System.out.println("---COMPLETAR TAREA---");
-                  System.out.println("INGRESE LA TAREA 1 2 O 3");
-                  ingreso= entrada.nextInt();
-                  
-                   if(ingreso==1){
-                  System.out.println("INGRESE LA DESCRIPCION DE LA TAREA 1");
-                  descrip= entrada.next();
-                  System.out.println("INGRESE EL ESTADO DE LA TAREA COMPLETA: TRUE , INCOMPLETA: FALSE");
-                  ESTADO= entrada.nextBoolean();
-                  
-                  System.out.println("INGRESE LA FECHA LIMITE 1 ");
-                   System.out.println("DIA");
-                             dia = entrada.nextInt();
-                             System.out.println("MES");
-                          mes= entrada.nextInt();
-                            System.out.println("AÑO");
-                          anio= entrada.nextInt();
-                  // fechaLim= entrada.nextLine();
-                  
-                    //HAY QUE GUARDAR LOS DATOS INGRESADOS
-                   TareaUno.setDescripcion(descrip);
-                   TareaUno.setEstado(ESTADO);
-                     TareaUno.setDia(dia);
-                  TareaUno.setMes(mes);
-                   TareaUno.setAnio(anio);
-                          }
-                    
-                   if(ingreso==2){
-                   System.out.println("INGRESE LA DESCRIPCION DE LA TAREA 2");
-                  descrip= entrada.next();
-                  System.out.println("INGRESE EL ESTADO DE LA TAREA COMPLETA: TRUE , INCOMPLETA: FALSE");
-                  ESTADO= entrada.nextBoolean();
-                  System.out.println("INGRESE LA FECHA LIMITE TAREA 2 ");
-                  System.out.println("DIA");
-                             dia = entrada.nextInt();
-                             System.out.println("MES");
-                          mes= entrada.nextInt();
-                            System.out.println("AÑO");
-                          anio= entrada.nextInt();
-                  //fechaLim= entrada.nextInt(); 
-                   //HAY QUE GUARDAR LOS DATOS INGRESADOS
-                   TareaDos.setDescripcion(descrip);
-                   TareaDos.setEstado(ESTADO);
-                     TareaDos.setDia(dia);
-                     TareaDos.setMes(mes);
-                   TareaDos.setAnio(anio);
-                   }
-                   
-                   if (ingreso==3){
-                  System.out.println("INGRESE LA DESCRIPCION DE LA TAREA 3");
-                  descrip= entrada.next();
-                  System.out.println("INGRESE EL ESTADO DE LA TAREA COMPLETA: TRUE , INCOMPLETA: FALSE");
-                  ESTADO= entrada.nextBoolean();
-                  System.out.println("INGRESE LA FECHA LIMITE TARE 3 ");
-                   System.out.println("DIA");
-                             dia = entrada.nextInt();
-                             System.out.println("MES");
-                          mes= entrada.nextInt();
-                            System.out.println("AÑO");
-                          anio= entrada.nextInt();
-                           // GUARDAMOS LOS DATOS INGRESADOS
-                   TareaTres.setDescripcion(descrip);
-                   TareaTres.setEstado(ESTADO);
-                   //TareaUno.setFechaLim(dia);
-                    TareaTres.setDia(dia);
-                  TareaTres.setMes(mes);
-                   TareaTres.setAnio(anio);
-                   //fechaLim= entrada.nextLine();
-                   }
-                  
+                 
+                System.out.println("Ingrese de la descripcion de la nueva tarea");
+                
+                descrip= entrada.next();
+                System.out.println("Ingrese el estado");
+                ESTADO= entrada.nextBoolean();
+                System.out.println("Ingrese la fecha de entrega");
+                System.out.println("Dia");
+                DIA= entrada.nextInt();
+                System.out.println("Mes");
+                MES= entrada.nextInt();
+                System.out.println("Año");
+                ANIO= entrada.nextInt();
+                
+                Task tarea;
+                tarea= new Task (iD,descrip,ESTADO,DIA,MES,ANIO,false,false);//instanciar el objeto en la clase
+                
+                //add agregar tarea a la lista
+                ListaTareas.add(tarea);
+                    iD++;
                  break;
                  
              case 2: 
               
+                   System.out.println("---LISTADO DE  TAREAS---");
+                   Task uno;
+                   //listatarea de tipo task con get obtengo en la posicion el objeto en la posicion 0
+                   //una vez q obtengo ese objeto lo guardo en la variable uno de tipo task
+                   int i=0;
+                   //size devuelve el tamaño de la lista 
+                 for (i=0;i<ListaTareas.size();i++){
+                     uno=ListaTareas.get(i);
+                     System.out.println("---TAREA ---"+uno.getID());
+                  System.out.println("DESCRIPCION:" +uno.getDescripcion()); 
+                  System.out.println("ESTADO:" +uno.getEstado());
+                  System.out.println("FECHA LIMITE: DIA: " +uno.getDia());
+                  System.out.println("MES:" +uno.getMes());
+                  System.out.println("AÑO:" +uno.getAnio()); 
+                 }
                  
-                System.out.println("---INGRESE EL NUMERO DE TAREA---");
-                 int i=0;
-                     i= entrada.nextInt();
-                     i--;
-                  System.out.println("---LISTADO DE  TAREAS---");
-                  int a=i+1;
-                  System.out.println("---TAREA ---"+a);
-                  System.out.println("DESCRIPCION:" +arregloTarea[i].getDescripcion()); 
-                  System.out.println("ESTADO:" +arregloTarea[i].getEstado());
-                  System.out.println("FECHA LIMITE: DIA" +arregloTarea[i].getDia());
-                   System.out.println("MES:" +arregloTarea[i].getMes());
-                    System.out.println("AÑO:" +arregloTarea[i].getAnio());
+                    
                   break;
-                  
-                  
-                  
+                 
              case 3:
                  System.out.println("---MOSTRAR UNA TAREA---");  
-                  System.out.println("INGRESE LA TAREA 1 2 O 3");
+                  System.out.println("INGRESE EL IDENTIFICADOR (ID)");
                  ingreso= entrada.nextInt();
-                 
-                 int b=ingreso-1;
-                System.out.println("---TAREA :---"+ingreso);
-                  System.out.println("DESCRIPCION:" +arregloTarea[b].getDescripcion()); 
-                  System.out.println("ESTADO:" +arregloTarea[b].getEstado());
-                    
-                     System.out.println("FECHA LIMITE: DIA" +arregloTarea[b].getDia());
-                   System.out.println("MES:" +arregloTarea[b].getMes());
-                    System.out.println("AÑO:" +arregloTarea[b].getAnio());
+                
+                  uno=ListaTareas.get(ingreso);
+                   
+                  System.out.println("---TAREA ---"+uno.getID());
+                  System.out.println("DESCRIPCION:" +uno.getDescripcion()); 
+                  System.out.println("ESTADO:" +uno.getEstado());
+                  System.out.println("FECHA LIMITE: DIA: " +uno.getDia());
+                  System.out.println("MES:" +uno.getMes());
+                  System.out.println("AÑO:" +uno.getAnio());
              
               break;
              case 4:
                  System.out.println("MARCAR UNA TAREA COMO HECHA");
-                 System.out.println("INGRESE EL NUMERO DE LA TAREA");
-                 int num=0;
-                 num= entrada.nextInt();
-                     num--;
-                 
+                 System.out.println("INGRESE EL ID");
+                 ingreso= entrada.nextInt();
+                
+                  uno=ListaTareas.get(ingreso);
                   
-                  arregloTarea[num].setEntregado(true);
                   
-                  System.out.println("---TAREA ENTREGADA---");
+                  uno.setEntregado(true);
+                  ListaTareas(ingreso)=uno;
+                  System.out.println("---TAREA HECHA---");
                   
                  
                  break;
              case 5:
+                 
                    System.out.println("ELIMINAR UNA TAREA");
-                     System.out.println("INGRESE EL NUMERO DE LA TAREA");
-                  num=0;
-                 num= entrada.nextInt();
-                     num--;
+                   System.out.println("INGRESE EL IDENTIFICADOR (ID)");
+                 ingreso= entrada.nextInt();
                 
-                  
-                  arregloTarea[num].setEliminado(true);//cambia el valor del atributo no deja de existir
-                  
+                  uno=ListaTareas.remove(ingreso);
+                 
                   System.out.println("---TAREA ELIMINADA---");
                    
                    
